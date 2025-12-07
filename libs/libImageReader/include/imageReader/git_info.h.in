@@ -1,0 +1,10 @@
+// git_info.h.in - шаблон для генерации git_info.h
+#pragma once
+
+#include <string>
+
+const std::string GIT_COMMIT_HASH = "@GIT_COMMIT_HASH@";
+const std::string GIT_BRANCH      = "@GIT_BRANCH@";
+const std::string GIT_COMMIT_DATE = "@GIT_COMMIT_DATE@";
+const std::string GIT_TAG         = "@GIT_TAG@";
+const std::string BUILD_DATE      = "@BUILD_DATE@";

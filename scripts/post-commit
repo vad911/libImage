@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# post-commit hook: обновляет git_info.h после каждого коммита
+
+PROJECT_DIR="$(git rev-parse --show-toplevel)"
+BUILD_DIR="$PROJECT_DIR/build"
+
+echo "[post-commit] Updating git_info.h..."
+
+if [ -d "$BUILD_DIR" ]; then
+    # Переходим в директорию сборки и запускаем CMake для переконфигурации
+    cd "$BUILD_DIR"
+    
+    # Переконфигурируем проект, что обновит versionInfo.h
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    
+    # Если библиотека imageReader уже была собрана, пересобираем её
+    if [ -f "CMakeCache.txt" ]; then
+        make imageReader
+    fi
+    
+    echo "[post-commit] git_info.h regenerated and library rebuilt."
+else
+    echo "[post-commit] Build directory not found. Run CMake manually to generate build system."
+fi

@@ -1,0 +1,12 @@
+// versionInfo.h.in
+#pragma once
+
+#include <string>
+
+namespace imageReader {
+    const std::string GIT_COMMIT_HASH = "@GIT_COMMIT_HASH@";
+    const std::string GIT_BRANCH      = "@GIT_BRANCH@";
+    const std::string GIT_COMMIT_DATE = "@GIT_COMMIT_DATE@";
+    const std::string GIT_TAG         = "@GIT_TAG@";
+    const std::string BUILD_DATE      = "@BUILD_DATE@";
+}

@@ -1,8 +1,10 @@
-#ifndef LIB_IMAGEREADERABSTRACT_H
-#define LIB_IMAGEREADERABSTRACT_H
+#ifndef LIB_IMAGEREADERTYPES_H
+#define LIB_IMAGEREADERTYPES_H
 #pragma once
 
 #include <string>
+
+namespace uniqueGems {
 
 class ReaderAbstract
 {
@@ -15,7 +17,9 @@ public:
     virtual void writeMemory(void *pfile, size_t filesize) = 0;
 
 private:
-
+    
 };
 
-#endif  // -- end LIB_IMAGEREADERABSTRACT_H
+// --end namespace uniqueGems 
+
+#endif  // -- end LIB_IMAGEREADERTYPES_H
