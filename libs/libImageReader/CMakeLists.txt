@@ -38,7 +38,7 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader)
 
 set(INCLUDES
     include/imageReader/imageReader.h
-    include/imageReader/versionInfo.h
+    ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h
     include/imageReader/versionInfo.h.in
     include/imageReader/git_info.h.in
 )
@@ -53,6 +53,9 @@ add_library(${LIB_IMAGEREADER}
     ${SOURCE}
     ${INCLUDES}
 )
+
+message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")
+message (" ###### --- target  where include :   ${CMAKE_CURRENT_SOURCE_DIR}/include/versionInfo.h")
 
 # Публичные заголовки (добавляем сгенерированную директорию)
 target_include_directories(${LIB_IMAGEREADER} PUBLIC 
