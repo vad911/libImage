@@ -41,6 +41,7 @@ set(INCLUDES
     ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h
     include/imageReader/versionInfo.h.in
     include/imageReader/git_info.h.in
+    include/imageReader/types.h
 )
 
 set(SOURCE
@@ -52,6 +53,8 @@ set(SOURCE
 add_library(${LIB_IMAGEREADER}
     ${SOURCE}
     ${INCLUDES}
+    src/types.cpp
+    include/imageReader/imageCommon.h include/imageReader/imageCommon.cpp
 )
 
 message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")
