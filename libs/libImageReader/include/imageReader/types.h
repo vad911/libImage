@@ -4,6 +4,7 @@
 
 #include <cstddef>
 
+
 namespace types {
 
 using byte = unsigned char;
@@ -19,6 +20,9 @@ enum class IMAGETYPES: int
     JPEGXR,
     WEBP,
 };
+
+
+
 
 
 enum class PIXELTYPE : int {
@@ -116,3 +120,4 @@ struct Pixel_RGBA32 : public Pixel_Abstract
 } // -- end namespace types
 
 #endif  // -- end LIB_IMAGEREADERTYPE_H
+

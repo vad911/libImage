@@ -42,19 +42,30 @@ set(INCLUDES
     include/imageReader/versionInfo.h.in
     include/imageReader/git_info.h.in
     include/imageReader/types.h
+    include/imageReader/imageCommon.h
+    include/imageReader/imageReaderAbsract.h
+    include/imageReader/imagereaderfabric.h
+    # -- include/imageReader/imageReaderTypes.h
+    include/imageReader/aux_func.h
+    include/imageReader/imagereaderbmp.h
 )
 
 set(SOURCE
     src/imageReader.cpp
     src/versionInfo.cpp
+    src/imageReaderAbsract.cpp
+    src/imageCommon.cpp
+    src/imagereaderfabric.cpp
+    src/types.cpp
+    # -- src/imageReaderTypes.cpp
+    src/aux_func.cpp
+    src/imagereaderbmp.cpp
 )
 
 # Добавляем библиотеку
 add_library(${LIB_IMAGEREADER}
     ${SOURCE}
     ${INCLUDES}
-    src/types.cpp
-    include/imageReader/imageCommon.h include/imageReader/imageCommon.cpp
 )
 
 message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")

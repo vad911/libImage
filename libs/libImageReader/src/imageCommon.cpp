@@ -1,4 +1,4 @@
-#include "imageCommon.h"
+#include <imageReader/imageCommon.h>
 
 ImageCommon::ImageCommon() {}
 

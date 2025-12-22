@@ -2,6 +2,10 @@
 #define LIB_IMAGEREADER_H
 #pragma once
 
+#include <string>
+#include <imageReader/imageReaderAbsract.h>
+
+
 // -- TODO подбор названия 
 // -- uniqueGems
 // -- Это составное слово из двух латинских корней:
@@ -13,10 +17,13 @@
 
 namespace uniqueGems {
 
-class ImageReader 
+class ImageReader  : public ImageReaderAbstract
 {
 public:
-
+    virtual void readFile(ImageCommon& imageCommon,    const std::string& filename);
+    virtual void readMemory(ImageCommon& imageCommon,  byte *pfile, size_t filesizeInBytes);
+    virtual void writeFile(ImageCommon& imageCommon,   const std::string& filename);
+    virtual void writeMemory(ImageCommon& imageCommon, byte *pfile, size_t filesizeInBytes);
 private:
 
 };
