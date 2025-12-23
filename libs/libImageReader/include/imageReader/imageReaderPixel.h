@@ -67,7 +67,7 @@ struct CROSSPLATFORM_EXPORT_API Pixel_BGRA32 : public Pixel_Abstract
     byte* getData();
 };
 
-struct Pixel_RGBA32 : public Pixel_Abstract
+struct CROSSPLATFORM_EXPORT_API Pixel_RGBA32 : public Pixel_Abstract
 {
     byte data[4];
     byte* getData();
