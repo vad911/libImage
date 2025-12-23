@@ -2,6 +2,7 @@
 #define IMAGEREADERFABRIC_H
 
 #include <imageReader/types.h>
+#include <imageReader/imageReaderGlobal.h>
 #include <imageReader/imageReaderAbsract.h>
 #include <memory>
 
@@ -9,7 +10,7 @@
 
 namespace uniqueGems {
 
-class ImageReaderFabric
+class  CROSSPLATFORM_EXPORT_API ImageReaderFabric
 {
 public:
     ImageReaderFabric();

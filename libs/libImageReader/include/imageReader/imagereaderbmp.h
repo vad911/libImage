@@ -1,12 +1,12 @@
 #ifndef IMAGEREADERBMP_H
 #define IMAGEREADERBMP_H
 
-
+#include <imageReader/imageReaderGlobal.h>
 #include <imageReader/imageReaderAbsract.h>
 
 namespace uniqueGems {
 
-class ImageReaderBMP : public ImageReaderAbstract
+class CROSSPLATFORM_EXPORT_API ImageReaderBMP : public ImageReaderAbstract
 {
 public:
     ImageReaderBMP();

@@ -3,7 +3,7 @@
 #pragma once
 
 #include <cstddef>
-
+#include <imageReader/imageReaderGlobal.h>
 
 namespace types {
 
@@ -39,7 +39,7 @@ enum class PIXELTYPE : int {
 };
 
 
-struct PixelFormat {
+struct CROSSPLATFORM_EXPORT_API PixelFormat {
     PIXELTYPE pixelType;
     void clear();
 
@@ -49,71 +49,6 @@ struct PixelFormat {
     // -- return in bytes
     size_t getPixelSizeInBites (const PIXELTYPE pixelType);
 };
-
-struct Pixel_Abstract {
-    virtual ~Pixel_Abstract();
-    PixelFormat pixelFormat;
-    size_t getPixelSize();
-    virtual byte* getData() = 0;
-};
-
-
-struct Pixel_BW1 : public Pixel_Abstract
-{
-    byte data[1];
-    byte* getData();
-
-};
-
-struct Pixel_BW8 : public Pixel_Abstract
-{
-    byte data[1];
-    byte* getData();
-};
-
-
-struct Pixel_Gray8 : public Pixel_Abstract
-{
-    byte data[1];
-    byte* getData();
-};
-
-struct Pixel_GrayAlpha16 : public Pixel_Abstract
-{
-    byte data[2];
-    byte* getData();
-};
-
-struct Pixel_RGB556  : public Pixel_Abstract
-{
-    byte data[2];
-    byte* getData();
-};
-
-struct Pixel_RGB24 : public Pixel_Abstract
-{
-    byte data[3];
-    byte* getData();
-};
-
-struct Pixel_BGR24 : public Pixel_Abstract
-{
-    byte data[3];
-    byte* getData();
-};
-
-struct Pixel_BGRA32 : public Pixel_Abstract
-{
-    byte data[4];
-    byte* getData();
-};
-
-struct Pixel_RGBA32 : public Pixel_Abstract
-{
-    byte data[4];
-    byte* getData();
-};
-
 
 
 

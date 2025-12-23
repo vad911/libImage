@@ -2,6 +2,7 @@
 #define LIB_IMAGEREADERTYPES_H
 #pragma once
 
+#include <imageReader/imageReaderGlobal.h>
 #include <string>
 
 namespace uniqueGems {

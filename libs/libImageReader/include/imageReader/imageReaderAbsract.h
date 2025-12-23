@@ -3,6 +3,7 @@
 #pragma once
 
 #include <imageReader/types.h>
+#include <imageReader/imageReaderGlobal.h>
 #include <imageReader/imageCommon.h>
 #include <string>
 
@@ -12,11 +13,8 @@ namespace uniqueGems {
 
 using types::byte;
 
-class ImageReaderAbstract
+class CROSSPLATFORM_EXPORT_API ImageReaderAbstract
 {
-
-
-
 
 public:
     ImageReaderAbstract();

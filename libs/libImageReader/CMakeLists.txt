@@ -37,6 +37,7 @@ file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader)
 # -------------------- определени комита get git info for make version [2]-- 
 
 set(INCLUDES
+    include/imageReader/imageReaderGlobal.h
     include/imageReader/imageReader.h
     ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h
     include/imageReader/versionInfo.h.in
@@ -48,6 +49,7 @@ set(INCLUDES
     # -- include/imageReader/imageReaderTypes.h
     include/imageReader/aux_func.h
     include/imageReader/imagereaderbmp.h
+    include/imageReader/imageReaderPixel.h
 )
 
 set(SOURCE
@@ -60,6 +62,7 @@ set(SOURCE
     # -- src/imageReaderTypes.cpp
     src/aux_func.cpp
     src/imagereaderbmp.cpp
+    src/imageReaderPixel.cpp
 )
 
 # Добавляем библиотеку
@@ -77,6 +80,13 @@ target_include_directories(${LIB_IMAGEREADER} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
+
+
+
+target_link_libraries(${LIB_IMAGEREADER}
+    PRIVATE bmplib
+)
+
 
 # Компиляционные флаги
 target_compile_options(${LIB_IMAGEREADER} PRIVATE -Wall -Wextra -Werror)

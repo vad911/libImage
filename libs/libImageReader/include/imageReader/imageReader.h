@@ -17,7 +17,7 @@
 
 namespace uniqueGems {
 
-class ImageReader  : public ImageReaderAbstract
+class CROSSPLATFORM_EXPORT_API ImageReader  : public ImageReaderAbstract
 {
 public:
     virtual void readFile(ImageCommon& imageCommon,    const std::string& filename);

@@ -1,5 +1,5 @@
 #include <imageReader/imagereaderbmp.h>
-
+#include <bmplib.h>
 
 namespace uniqueGems {
 

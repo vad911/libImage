@@ -6,9 +6,15 @@
 // -- и из него создаются все
 
 #include <imageReader/types.h>
+#include <imageReader/imageReaderPixel.h>
 #include <vector>
 
-struct ImageCommonHeader {
+// using uniqueGems::Pixel_RGBA32;
+// namespace  uniqueGems { 
+// struct Pixel_RGBA32;
+// }; // -- end namespace  uniqueGems 
+
+struct CROSSPLATFORM_EXPORT_API ImageCommonHeader {
     types::PixelFormat pixelFormat;
     size_t width;     // -- размер в пикселях
     size_t height;    // -- размер в пикселях
@@ -17,7 +23,7 @@ struct ImageCommonHeader {
 
 
 
-class ImageCommon
+class CROSSPLATFORM_EXPORT_API ImageCommon
 {
 public:
     ImageCommon();
@@ -31,7 +37,7 @@ public:
     std::vector<types::byte> getRow(size_t numberRow);
     std::vector<types::byte> getColumn(size_t numberColumn);
     size_t getStride();  // -- возвращает размер строки изображения в байтах
-    types::Pixel_RGBA32*  getPixel(size_t x, size_t y);
+    uniqueGems::Pixel_RGBA32*  getPixel(size_t x, size_t y);
 
 
 
