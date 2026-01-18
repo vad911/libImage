@@ -109,6 +109,13 @@ add_executable(test_converter test/test_converter.cpp)
 target_link_libraries(test_converter ${LIB_IMAGEREADER})
 
 
+add_executable(examples_create example/example_create_rgb.cpp)
+target_link_libraries(examples_create ${LIB_IMAGEREADER})
+
+
+
+
+
 message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")
 message (" ###### --- target  where include :   ${CMAKE_CURRENT_SOURCE_DIR}/include/versionInfo.h")
 
