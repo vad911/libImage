@@ -11,6 +11,7 @@ set(INCLUDES
     bmp-read.h
     bmp-write.h
     bmplib.h
+    bmp-common.h
 
     gen-huffman-codes.h
     huffman.h

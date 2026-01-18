@@ -1,51 +1,22 @@
-#ifndef IMAGECOMMON_H
-#define IMAGECOMMON_H
-
-// -------------------------------------------------------
-// -- файл картинки промежуточный общий - в него конвертируются все форматы --
-// -- и из него создаются все
-
-#include <imageReader/types.h>
-#include <imageReader/imageReaderPixel.h>
+#pragma once
 #include <vector>
+#include <imageReader/pixelFormat.h>
 
-// using uniqueGems::Pixel_RGBA32;
-// namespace  uniqueGems { 
-// struct Pixel_RGBA32;
-// }; // -- end namespace  uniqueGems 
-
-struct CROSSPLATFORM_EXPORT_API ImageCommonHeader {
-    types::PixelFormat pixelFormat;
-    size_t width;     // -- размер в пикселях
-    size_t height;    // -- размер в пикселях
-    void clear();
-};
-
-
-
-class CROSSPLATFORM_EXPORT_API ImageCommon
+namespace mylibImageReader
 {
-public:
-    ImageCommon();
-    size_t getSize();
 
-    void constructNewImageCommon(const ImageCommonHeader& header, const std::vector<types::byte>& data);
-    void setHeader(const ImageCommonHeader& header);
-    void setData(const std::vector<types::byte>& data);
+struct ImageCommon
+{
+    int    width       = 0;
+    int    height      = 0;
+    size_t strideBytes = 0;
 
-    // -- numberRow = [0... (height-1)]
-    std::vector<types::byte> getRow(size_t numberRow);
-    std::vector<types::byte> getColumn(size_t numberColumn);
-    size_t getStride();  // -- возвращает размер строки изображения в байтах
-    uniqueGems::Pixel_RGBA32*  getPixel(size_t x, size_t y);
+    PixelFormat       format;
+    std::vector<byte> data;
 
-
-
-
-private:
-    ImageCommonHeader        m_header;
-    std::vector<types::byte> m_data;     // -- храню все данные изображения в m_data  в формате RGBA32
-
+    size_t stride() const;
+    size_t sizeBytes() const;
+    
 };
 
-#endif // IMAGECOMMON_H
+}

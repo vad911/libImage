@@ -1,0 +1,1 @@
+#include <mylibbmp/BmpImage.h>

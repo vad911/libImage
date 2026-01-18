@@ -11,7 +11,7 @@
 namespace uniqueGems {
 
 
-using types::byte;
+
 
 class CROSSPLATFORM_EXPORT_API ImageReaderAbstract
 {

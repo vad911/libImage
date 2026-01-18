@@ -1,8 +1,46 @@
 #include <imageReader/aux_func.h>
+#include <fstream>
 
 // Aux_Func::Aux_Func() {}
 
 
+
+bool Aux_Func::fileExists(const std::string &filePath)
+{
+    namespace fs = std::filesystem;
+    return fs::exists(filePath) && fs::is_regular_file(filePath);
+}
+
+FileStatus Aux_Func::checkFile(const std::string &filePath)
+{
+    namespace fs = std::filesystem;
+    try {
+        if (!fs::exists(filePath)) {
+            return FileStatus::NOT_EXISTS;
+        }
+
+        if (fs::is_directory(filePath)) {
+            return FileStatus::IS_DIRECTORY;
+        }
+
+        if (fs::is_symlink(filePath)) {
+            return FileStatus::IS_SYMLINK;
+        }
+
+        // Проверка на возможность чтения
+        std::ifstream file(filePath);
+        if (!file.is_open()) {
+            return FileStatus::ACCESS_DENIED;
+        }
+        file.close();
+
+        return FileStatus::EXISTS;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Ошибка проверки файла: " << e.what() << std::endl;
+        return FileStatus::UNKNOWN_ERROR;
+    }
+}
 
 std::string Aux_Func::makeUpperString(const std::string& filename) {
     std::string result = filename;  // Создаем копию исходной строки

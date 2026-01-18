@@ -3,15 +3,19 @@
 
 #include <imageReader/types.h>
 
+#include <filesystem>
 #include <string>
+#include <iostream>
 
 using types::IMAGETYPES;
-
+using types::FileStatus;
 
 class Aux_Func
 {
 public:
     // Aux_Func();
+    bool fileExists(const std::string& filePath); // -- проверка файла на существование
+    FileStatus checkFile(const std::string& filePath);
 
     static std::string makeUpperString(const std::string& filename);  // -- превращает буквы в заглавные
     static std::string makeLowerString(const std::string& filename);  // -- превращает буквы в строчные

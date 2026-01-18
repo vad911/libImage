@@ -48,8 +48,16 @@ set(INCLUDES
     include/imageReader/imagereaderfabric.h
     # -- include/imageReader/imageReaderTypes.h
     include/imageReader/aux_func.h
-    include/imageReader/imagereaderbmp.h
+    include/imageReader/imageReader_BMP.h
     include/imageReader/imageReaderPixel.h
+
+    include/imageReader/pixelFormat.h
+    include/imageReader/pixel.h
+    include/imageReader/pixelConverter.h
+    include/imageReader/channelView.h
+    include/imageReader/pixelView.h
+    include/imageReader/conversionPipeline.h
+
 )
 
 set(SOURCE
@@ -61,15 +69,32 @@ set(SOURCE
     src/types.cpp
     # -- src/imageReaderTypes.cpp
     src/aux_func.cpp
-    src/imagereaderbmp.cpp
+    src/imageReader_BMP.cpp
     src/imageReaderPixel.cpp
+
+    src/pixelFormat.cpp
+    src/pixel.cpp
+    src/pixelConverter.cpp
+    src/channelView.cpp
+    src/pixelView.cpp
+    src/conversionPipeline.cpp
+
+    src/simd_rgb_bgr.cpp
 )
+
+
+set(  TEST_SOURCES
+    test_converter.cpp
+    test_pixelformat.cpp
+)
+
 
 # Добавляем библиотеку
 add_library(${LIB_IMAGEREADER}
     ${SOURCE}
     ${INCLUDES}
 )
+
 
 message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")
 message (" ###### --- target  where include :   ${CMAKE_CURRENT_SOURCE_DIR}/include/versionInfo.h")

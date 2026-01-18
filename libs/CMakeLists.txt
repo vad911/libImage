@@ -14,6 +14,7 @@ message("### --- work libBandle Cmakelist_libBandle !!!")
 # Подключаем библиотеки
 add_subdirectory(libImageReader)
 add_subdirectory(bmplib)
+add_subdirectory(mylibbmp)
 # add_subdirectory(libeigen)
 
 # add_subdirectory(libqwt)
