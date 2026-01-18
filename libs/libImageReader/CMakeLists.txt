@@ -57,6 +57,9 @@ set(INCLUDES
     include/imageReader/channelView.h
     include/imageReader/pixelView.h
     include/imageReader/conversionPipeline.h
+    include/imageReader/pixelFormatValidator.h
+    include/imageReader/GammaLUT.h
+    include/imageReader/conversionGraph.h
 
 )
 
@@ -80,6 +83,9 @@ set(SOURCE
     src/conversionPipeline.cpp
 
     src/simd_rgb_bgr.cpp
+    src/pixelFormatValidator.cpp
+    src/GammaLUT.cpp
+    src/conversionGraph.cpp
 )
 
 
@@ -94,6 +100,13 @@ add_library(${LIB_IMAGEREADER}
     ${SOURCE}
     ${INCLUDES}
 )
+
+
+add_executable(test_pixelformat test/test_pixelformat.cpp)
+target_link_libraries(test_pixelformat ${LIB_IMAGEREADER})
+
+add_executable(test_converter test/test_converter.cpp)
+target_link_libraries(test_converter ${LIB_IMAGEREADER})
 
 
 message (" ###### --- where include :   ${CMAKE_CURRENT_BINARY_DIR}/include/imageReader/versionInfo.h")

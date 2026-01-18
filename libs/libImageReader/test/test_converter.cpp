@@ -1,3 +1,4 @@
+
 #include <imageReader/conversionPipeline.h>
 #include <cassert>
 
@@ -9,23 +10,23 @@ int main()
     img.width = 1;
     img.height = 1;
     img.format = {
+        ColorSpace::Gray,
+        ChannelLayout::Y,
+        ChannelType::UInt,
+        ChannelSize::Bit8,
+        PixelPacking::None
+    };
+    img.data = {128};
+
+    ImageCommon out;
+    PixelFormat rgb{
         ColorSpace::RGB,
         ChannelLayout::RGB,
         ChannelType::UInt,
         ChannelSize::Bit8,
         PixelPacking::None
     };
-    img.data = {255, 0, 0};
 
-    ImageCommon out;
-    PixelFormat hsv{
-        ColorSpace::HSV,
-        ChannelLayout::HSV,
-        ChannelType::UInt,
-        ChannelSize::Bit8,
-        PixelPacking::None
-    };
-
-    bool ok = convert(img).to(hsv).run(out);
+    bool ok = convert(img).to(rgb).run(out);
     assert(ok);
 }

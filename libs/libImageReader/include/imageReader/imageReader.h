@@ -15,7 +15,7 @@
 // namespace SolAscindit
 // namespace uniqueGems
 
-namespace uniqueGems {
+namespace mylibImageReader {
 
 class CROSSPLATFORM_EXPORT_API ImageReader  : public ImageReaderAbstract
 {

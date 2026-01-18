@@ -1,9 +1,9 @@
 #include <imageReader/imagereaderfabric.h>
 #include <imageReader/aux_func.h>
 
-#include <imageReader/imagereaderbmp.h>
+#include <imageReader/imageReader_BMP.h>
 
-namespace uniqueGems {
+namespace mylibImageReader {
 
 
 ImageReaderFabric::ImageReaderFabric()

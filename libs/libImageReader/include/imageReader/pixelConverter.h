@@ -4,6 +4,8 @@
 namespace mylibImageReader
 {
 
+class PixelView;
+
 class PixelConverter
 {
 public:

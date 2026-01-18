@@ -1,6 +1,9 @@
 #pragma once
 #include <imageReader/types.h>
 
+
+// namespace mli = mylibImageReader
+
 namespace mylibImageReader
 {
 
@@ -70,4 +73,4 @@ struct PixelFormat
     bool hasAlpha() const;
 };
 
-} // namespace mylibImageReader
+}

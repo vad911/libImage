@@ -8,9 +8,7 @@
 #include <string>
 
 
-namespace uniqueGems {
-
-
+namespace mylibImageReader {
 
 
 class CROSSPLATFORM_EXPORT_API ImageReaderAbstract

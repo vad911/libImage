@@ -36,5 +36,8 @@ enum class FileStatus {
 
 } // -- end namespace mylibImageReader
 
+
+
+
 #endif  // -- end LIB_IMAGEREADERTYPE_H
 

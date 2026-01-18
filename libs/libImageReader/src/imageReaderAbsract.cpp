@@ -1,7 +1,7 @@
 #include <imageReader/imageReaderAbsract.h>
 
 
-namespace uniqueGems {
+namespace mylibImageReader {
 
 ImageReaderAbstract::ImageReaderAbstract() 
 {
@@ -12,4 +12,4 @@ ImageReaderAbstract::~ImageReaderAbstract()
 }
 
 
-}  // -- end namespace uniqueGems {
+}  // -- end namespace mylibImageReader {

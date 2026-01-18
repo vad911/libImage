@@ -1,7 +1,7 @@
 #include <imageReader/imageReader.h>
 
 
-namespace uniqueGems {
+namespace mylibImageReader {
 
 void ImageReader::readFile([[maybe_unused]] ImageCommon& imageCommon, [[maybe_unused]] const std::string& filename)
 {
@@ -13,7 +13,7 @@ void ImageReader::readMemory([[maybe_unused]] ImageCommon& imageCommon, [[maybe_
 
 }
 
-void uniqueGems::ImageReader::writeFile([[maybe_unused]] ImageCommon& imageCommon, [[maybe_unused]] const std::string& filename)
+void ImageReader::writeFile([[maybe_unused]] ImageCommon& imageCommon, [[maybe_unused]] const std::string& filename)
 {
 
 }

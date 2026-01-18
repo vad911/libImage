@@ -7,8 +7,8 @@
 #include <string>
 #include <iostream>
 
-using types::IMAGETYPES;
-using types::FileStatus;
+using mylibImageReader::IMAGETYPES;
+using mylibImageReader::FileStatus;
 
 class Aux_Func
 {
