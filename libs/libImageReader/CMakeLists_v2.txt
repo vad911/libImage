@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.16)
+
+project(mylibImageReader
+    VERSION 0.1.0
+    LANGUAGES CXX
+)
+
+# =========================
+# Global settings
+# =========================
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# =========================
+# Options
+# =========================
+
+option(MYLIB_ENABLE_AVX2 "Enable AVX2 SIMD optimizations" ON)
+option(MYLIB_ENABLE_SSE2 "Enable SSE2 SIMD fallback" ON)
+option(MYLIB_BUILD_TESTS "Build unit tests" ON)
+
+# =========================
+# Compiler flags
+# =========================
+
+if (MSVC)
+    add_compile_options(/W4 /permissive-)
+    if (MYLIB_ENABLE_AVX2)
+        add_compile_options(/arch:AVX2)
+    endif()
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic)
+    if (MYLIB_ENABLE_AVX2)
+        add_compile_options(-mavx2 -mfma)
+    endif()
+    if (MYLIB_ENABLE_SSE2)
+        add_compile_options(-msse2)
+    endif()
+endif()
+
+# =========================
+# Library
+# =========================
+
+add_library(mylibImageReader
+    src/ImageCommon.cpp
+    src/PixelFormat.cpp
+    src/PixelConverter.cpp
+    src/ThreadPool.cpp
+    src/ImageContext.cpp
+
+    simd/rgb_bgr_avx2.cpp
+    simd/rgba_bgra_avx2.cpp
+    simd/rgb565_unpack_avx2.cpp
+    simd/rgb_ycbcr_avx2.cpp
+    simd/xyz_lab_lch_avx2.cpp
+    simd/resize_bilinear_avx2.cpp
+
+    scalar/rgb_ycbcr_scalar.cpp
+    scalar/xyz_lab_lch_scalar.cpp
+)
+
+target_include_directories(mylibImageReader
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+target_compile_definitions(mylibImageReader
+    PRIVATE
+        MYLIB_ENABLE_AVX2=$<BOOL:${MYLIB_ENABLE_AVX2}>
+        MYLIB_ENABLE_SSE2=$<BOOL:${MYLIB_ENABLE_SSE2}>
+)
+
+# =========================
+# Tests
+# =========================
+
+if (MYLIB_BUILD_TESTS)
+    enable_testing()
+
+    add_executable(test_pixelformat
+        tests/test_pixelformat.cpp
+    )
+
+    target_link_libraries(test_pixelformat
+        PRIVATE mylibImageReader
+    )
+
+    add_test(
+        NAME PixelFormatTest
+        COMMAND test_pixelformat
+    )
+endif()
