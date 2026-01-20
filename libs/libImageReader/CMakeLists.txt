@@ -100,6 +100,9 @@ set(SOURCE
 set(  TEST_SOURCES
     test_converter.cpp
     test_pixelformat.cpp
+    test_rgb_ycbcr.cpp
+    test_xyz_lab_lch.cpp
+    test_roundtrip.cpp
 )
 
 
