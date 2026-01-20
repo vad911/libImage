@@ -61,6 +61,10 @@ set(INCLUDES
     include/imageReader/GammaLUT.h
     include/imageReader/conversionGraph.h
 
+    include/imageReader/channel.h
+    include/imageReader/threadPool.h
+    include/imageReader/imageContext.h
+
 )
 
 set(SOURCE
@@ -86,6 +90,10 @@ set(SOURCE
     src/pixelFormatValidator.cpp
     src/GammaLUT.cpp
     src/conversionGraph.cpp
+
+
+    src/threadPool.cpp
+    src/imageContext.cpp
 )
 
 

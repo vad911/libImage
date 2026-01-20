@@ -1,19 +1,18 @@
-#include <imageReader/pixelFormat.h>
+#include "PixelFormat.h"
 #include <cassert>
 
 using namespace mylibImageReader;
 
 int main()
 {
-    PixelFormat f{
-        ColorSpace::RGB,
-        ChannelLayout::RGBA,
-        ChannelType::UInt,
-        ChannelSize::Bit8,
-        PixelPacking::None
-    };
+    PixelFormat rgb = PixelFormat::RGB8();
+    PixelFormat rgba = PixelFormat::RGBA8();
 
-    assert(f.channels() == 4);
-    assert(f.bytesPerPixel() == 4);
-    assert(f.hasAlpha());
+    assert(rgb.channelCount() == 3);
+    assert(!rgb.hasAlpha());
+
+    assert(rgba.channelCount() == 4);
+    assert(rgba.hasAlpha());
+
+    return 0;
 }
