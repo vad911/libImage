@@ -7,7 +7,20 @@
 
 namespace mylibImageReader {
 
+
 using byte = uint8_t;
+
+
+enum class ChannelSize : byte
+{
+    Bits1  = 1,
+    Bits8  = 8,
+    Bits16 = 16,
+    Bits24 = 24,
+    Bits32 = 32,
+    Bits64 = 64
+};
+
 
 
 enum class IMAGETYPES: int
