@@ -64,6 +64,7 @@ set(INCLUDES
     include/imageReader/channel.h
     include/imageReader/threadPool.h
     include/imageReader/imageContext.h
+    include/imageReader/uploadContext.h
 
 )
 
@@ -94,6 +95,7 @@ set(SOURCE
 
     src/threadPool.cpp
     src/imageContext.cpp
+    src/uploadContext.cpp
 )
 
 

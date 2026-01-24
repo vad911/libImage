@@ -1,5 +1,7 @@
 #pragma once
 #include <imageReader/pixelFormat.h>
+#include <imageReader/types.h>
+
 
 namespace mylibImageReader
 {
