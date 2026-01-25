@@ -12,7 +12,8 @@ message("### --- work libBandle Cmakelist_libBandle !!!")
 # -- find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
 # Подключаем библиотеки
-add_subdirectory(libImageReader)
+# -- add_subdirectory(libImageReader)
+add_subdirectory(coreImage)
 add_subdirectory(bmplib)
 add_subdirectory(mylibbmp)
 # add_subdirectory(libeigen)

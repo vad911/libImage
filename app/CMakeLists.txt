@@ -39,9 +39,9 @@ add_executable(${PROJECT_NAME}
 
 
 
-target_link_libraries(${PROJECT_NAME}
-    PRIVATE imageReader
-)
+# -- target_link_libraries(${PROJECT_NAME}
+# --     PRIVATE imageReader
+# -- )
 
 
 # Указываем include директории
