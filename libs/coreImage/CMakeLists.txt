@@ -64,6 +64,12 @@ set(COREIMAGE_SOURCES
 
 )
 
+set(COREIMAGE_TESTS
+    ${COREIMAGE_SRC_DIR}/test/test_coreImage.cpp
+    
+
+)
+
 # ─────────────────────────────────────────────
 # Target
 # ─────────────────────────────────────────────
@@ -74,6 +80,15 @@ add_library(coreImage
 )
 
 add_library(coreImage::coreImage ALIAS coreImage)
+
+
+# ----------------------
+# Собираем тестовый exe
+# ----------------------
+add_executable(test_coreImage
+    ${COREIMAGE_TESTS}
+)
+
 
 # ─────────────────────────────────────────────
 # Include directories

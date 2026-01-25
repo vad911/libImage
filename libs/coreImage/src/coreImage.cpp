@@ -1,5 +1,6 @@
 #include <coreImage/coreImage.h>
 #include <stdexcept>
+#include <cstring>
 
 namespace myCoreImage
 {
@@ -25,6 +26,7 @@ ChannelArray fromInterleaved(
         channels.emplace_back(info, width, height);
     }
 
+    // Считаем размер пикселя в байтах
     std::size_t pixelSize = 0;
     for (const auto& desc : elementDescs)
         pixelSize += desc.bytesPerElement();
@@ -46,11 +48,7 @@ ChannelArray fromInterleaved(
                 auto bytesPerElement = channel.data().elementDesc().bytesPerElement();
                 std::uint8_t* dest = static_cast<std::uint8_t*>(channel.data().data()) + y*channel.data().strideBytes() + x*bytesPerElement;
 
-                // копируем байты для одного элемента
-                for (std::size_t b = 0; b < bytesPerElement; ++b)
-                {
-                    dest[b] = imageData[pixelOffset + channelOffset + b];
-                }
+                std::memcpy(dest, imageData.data() + pixelOffset + channelOffset, bytesPerElement);
 
                 channelOffset += bytesPerElement;
             }
@@ -91,10 +89,7 @@ std::vector<byte> toInterleaved(const ChannelArray& channels)
             {
                 const auto& channel = channels[c];
                 const auto* src = static_cast<const byte*>(channel.data().data()) + y*channel.data().strideBytes() + x*bytesPerChannel[c];
-                for (std::size_t b = 0; b < bytesPerChannel[c]; ++b)
-                {
-                    imageData[pixelOffset + channelOffset + b] = src[b];
-                }
+                std::memcpy(imageData.data() + pixelOffset + channelOffset, src, bytesPerChannel[c]);
                 channelOffset += bytesPerChannel[c];
             }
         }
