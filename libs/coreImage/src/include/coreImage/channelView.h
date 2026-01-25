@@ -1,12 +1,15 @@
 #pragma once
 
-#include <cstddef>
+#include <coreImage/lib_coreImage.h>
 #include <coreImage/channelElementDesc.h>
+
+#include <cstddef>
+
 
 namespace myCoreImage
 {
 
-class ChannelView
+class COREIMAGE_API ChannelView
 {
 public:
     ChannelView() = default;

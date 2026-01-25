@@ -50,6 +50,7 @@ set(COREIMAGE_HEADERS
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channelElementDesc.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channelView.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/coreImage.h
+    ${COREIMAGE_INCLUDE_DIR}/coreImage/lib_coreImage.h
 
 )
 
@@ -66,8 +67,6 @@ set(COREIMAGE_SOURCES
 
 set(COREIMAGE_TESTS
     ${COREIMAGE_SRC_DIR}/test/test_coreImage.cpp
-    
-
 )
 
 # ─────────────────────────────────────────────
@@ -81,13 +80,9 @@ add_library(coreImage
 
 add_library(coreImage::coreImage ALIAS coreImage)
 
+target_compile_definitions(coreImage PRIVATE COREIMAGE_EXPORTS)
 
-# ----------------------
-# Собираем тестовый exe
-# ----------------------
-add_executable(test_coreImage
-    ${COREIMAGE_TESTS}
-)
+
 
 
 # ─────────────────────────────────────────────
@@ -109,6 +104,11 @@ if (MSVC)
 else()
     target_compile_options(coreImage PRIVATE -Wall -Wextra -Wpedantic)
 endif()
+
+
+
+add_subdirectory(src/test)
+
 
 # ─────────────────────────────────────────────
 # Properties
@@ -149,9 +149,9 @@ install(
 )
 
 # ─────────────────────────────────────────────
-# Tests (future)
+# Tests
 # ─────────────────────────────────────────────
 if (COREIMAGE_BUILD_TESTS)
     enable_testing()
-    add_subdirectory(tests)
+    add_subdirectory(src/test)
 endif()

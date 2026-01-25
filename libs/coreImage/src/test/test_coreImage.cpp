@@ -2,7 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <cstring>
-#include "coreImage/coreImage.h"
+#include <coreImage/coreImage.h>
 
 using namespace myCoreImage;
 

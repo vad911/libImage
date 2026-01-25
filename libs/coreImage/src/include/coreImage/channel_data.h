@@ -1,13 +1,14 @@
 #pragma once
 
 #include <vector>
+#include <coreImage/lib_coreImage.h>
 #include <coreImage/types.h>
 #include <coreImage/channelElementDesc.h>
 
 namespace myCoreImage
 {
 
-class ChannelData
+class COREIMAGE_API ChannelData
 {
 public:
     ChannelData() = default;

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <coreImage/lib_coreImage.h>
 #include <coreImage/channel_info.h>
 #include <coreImage/channel_data.h>
 #include <coreImage/channelView.h>
@@ -7,7 +8,7 @@
 namespace myCoreImage
 {
 
-class Channel
+class COREIMAGE_API Channel
 {
 public:
     Channel() = default;

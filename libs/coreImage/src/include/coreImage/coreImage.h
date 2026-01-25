@@ -1,7 +1,10 @@
 #pragma once
 
-#include <vector>
+#include <coreImage/lib_coreImage.h>
+#include <coreImage/channelElementDesc.h>
 #include <coreImage/channel.h>
+
+#include <vector>
 
 namespace myCoreImage
 {
@@ -18,7 +21,7 @@ using ChannelArray = std::vector<Channel>;
 // elementDescs: описания каналов (тип+битность)
 // semantics   : семантика каналов (R,G,B,Gray,...)
 // ============================
-ChannelArray fromInterleaved(
+ChannelArray COREIMAGE_API fromInterleaved(
     const std::vector<byte>& imageData,
     std::size_t width,
     std::size_t height,
@@ -31,6 +34,6 @@ ChannelArray fromInterleaved(
 // toInterleaved
 // Превратить массив каналов обратно в interleaved поток байтов
 // ============================
-std::vector<byte> toInterleaved(const ChannelArray& channels);
+std::vector<byte> COREIMAGE_API toInterleaved(const ChannelArray& channels);
 
 } // namespace myCoreImage
