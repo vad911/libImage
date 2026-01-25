@@ -3,6 +3,7 @@
 #define LIB_IMAGEREADERTYPE_H
 
 #include <cstdint>
+#include <imageReader/types.h>
 #include <imageReader/imageReaderGlobal.h>
 
 namespace mylibImageReader {
@@ -19,6 +20,18 @@ enum class ChannelSize : byte
     Bits24 = 24,
     Bits32 = 32,
     Bits64 = 64
+};
+
+
+enum class ColorSpace
+{
+    RGB,
+    RGBA,
+    Gray,
+    YCbCr,
+    XYZ,
+    Lab,
+    LCh
 };
 
 

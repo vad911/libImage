@@ -1,4 +1,6 @@
-#include "ImageContext.h"
+#include <imageReader/imageContext.h>
+
+
 
 namespace mylibImageReader
 {

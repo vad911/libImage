@@ -9,13 +9,13 @@ int main()
     ImageCommon img;
     img.width = 1;
     img.height = 1;
-    img.format = {
+    img.format = PixelFormat (
         ColorSpace::Gray,
         ChannelLayout::Y,
         ChannelType::UInt,
         ChannelSize::Bit8,
         PixelPacking::None
-    };
+        );
     img.data = {128};
 
     ImageCommon out;

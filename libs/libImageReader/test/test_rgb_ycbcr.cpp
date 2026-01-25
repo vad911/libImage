@@ -3,7 +3,7 @@
 #include <cmath>
 #include <cstring>
 
-#include "ImageCommon.h"
+#include <imageReader/imageCommon.h>
 
 using namespace mylibImageReader;
 

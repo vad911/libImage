@@ -1,6 +1,7 @@
 #pragma once
 
 #include <imageReader/channel.h>
+#include <imageReader/pixelConverter.h>
 #include <vector>
 #include <stdexcept>
 
@@ -11,6 +12,10 @@ class PixelFormat
 {
 public:
     PixelFormat() = default;
+
+    PixelFormat(std::initializer_list<ChannelDesc> channels) : m_channels(channels)
+    {
+    }
 
     explicit PixelFormat(std::vector<ChannelDesc> channels)
         : m_channels(std::move(channels))
@@ -35,6 +40,10 @@ public:
             size += channelTypeSize(c.type);
         return size;
     }
+
+
+    ColorSpace colorSpace() const;
+    bool has(ChannelSemantic s) const;
 
     bool hasAlpha() const noexcept
     {

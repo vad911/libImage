@@ -1,4 +1,4 @@
-#include "PixelFormat.h"
+#include <imageReader/pixelFormat.h>
 #include <cassert>
 
 using namespace mylibImageReader;

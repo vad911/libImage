@@ -1,20 +1,14 @@
 #pragma once
 
+#include <imageReader/types.h>
 #include <imageReader/imageCommon.h>
 
 namespace mylibImageReader
 {
 
-enum class ColorSpace
-{
-    RGB,
-    RGBA,
-    Gray,
-    YCbCr,
-    XYZ,
-    Lab,
-    LCh
-};
+
+
+class ImageCommon;
 
 class PixelConverter
 {

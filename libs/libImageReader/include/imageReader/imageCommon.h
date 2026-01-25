@@ -8,6 +8,8 @@
 namespace mylibImageReader
 {
 
+class PixelFormat;
+
 class ImageCommon
 {
 public:
