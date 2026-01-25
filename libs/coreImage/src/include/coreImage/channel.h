@@ -2,22 +2,32 @@
 
 #include <coreImage/channel_info.h>
 #include <coreImage/channel_data.h>
+#include <coreImage/channelView.h>
 
 namespace myCoreImage
 {
-    class Channel
-    {
-    public:
-        ChannelInfo info;
-        ChannelData data;
 
-        Channel() = default;
+class Channel
+{
+public:
+    Channel() = default;
 
-        Channel(const ChannelInfo& channelInfo,
-                std::size_t elementCount)
-            : info(channelInfo)
-            , data(channelInfo, elementCount)
-        {
-        }
-    };
-}
+    Channel(ChannelInfo info,
+            std::size_t width,
+            std::size_t height);
+
+    ChannelInfo& info() noexcept;
+    const ChannelInfo& info() const noexcept;
+
+    ChannelData& data() noexcept;
+    const ChannelData& data() const noexcept;
+
+    ChannelView view() noexcept;
+    ChannelView view() const noexcept;
+
+private:
+    ChannelInfo m_info;
+    ChannelData m_data;
+};
+
+} // namespace myCoreImage

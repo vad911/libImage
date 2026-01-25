@@ -1,41 +1,36 @@
 #pragma once
 
-#include <cstddef>
-#include <coreImage/channel_info.h>
+#include <vector>
+#include <coreImage/types.h>
+#include <coreImage/channelElementDesc.h>
 
 namespace myCoreImage
 {
-    class ChannelData
-    {
-    public:
-        ChannelData() = default;
 
-        ChannelData(const ChannelInfo& info,
-                    std::size_t elementCount);
+class ChannelData
+{
+public:
+    ChannelData() = default;
 
-        ~ChannelData();
+    ChannelData(std::size_t width,
+                std::size_t height,
+                ChannelElementDesc elementDesc);
 
-        ChannelData(const ChannelData&) = delete;
-        ChannelData& operator=(const ChannelData&) = delete;
+    void* data() noexcept;
+    const void* data() const noexcept;
 
-        ChannelData(ChannelData&&) noexcept;
-        ChannelData& operator=(ChannelData&&) noexcept;
+    std::size_t width() const noexcept;
+    std::size_t height() const noexcept;
+    std::size_t strideBytes() const noexcept;
 
-        void*       data()       noexcept;
-        const void* data() const noexcept;
+    ChannelElementDesc elementDesc() const noexcept;
 
-        std::size_t elementCount() const noexcept;
-        std::size_t bytesPerElement() const noexcept;
-        std::size_t totalBytes() const noexcept;
+private:
+    std::size_t              m_width  = 0;
+    std::size_t              m_height = 0;
+    std::size_t              m_strideBytes = 0;
+    ChannelElementDesc       m_elementDesc{};
+    std::vector<byte>        m_buffer;
+};
 
-        const ChannelInfo& info() const noexcept;
-
-    private:
-        ChannelInfo m_info{};
-        std::byte*  m_data  = nullptr;
-        std::size_t m_count = 0;
-    };
-
-    // Example algorithm
-    void normalize(ChannelData& data);
-}
+} // namespace myCoreImage
