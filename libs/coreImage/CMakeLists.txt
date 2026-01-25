@@ -51,6 +51,7 @@ set(COREIMAGE_HEADERS
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channelView.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/coreImage.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/lib_coreImage.h
+    ${COREIMAGE_INCLUDE_DIR}/coreImage/image.h
 
 )
 
@@ -62,6 +63,7 @@ set(COREIMAGE_SOURCES
     ${COREIMAGE_SRC_DIR}/channelElementDesc.cpp
     ${COREIMAGE_SRC_DIR}/channelView.cpp
     ${COREIMAGE_SRC_DIR}/coreImage.cpp
+    ${COREIMAGE_SRC_DIR}/image.cpp
 
 )
 
