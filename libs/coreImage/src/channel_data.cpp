@@ -1,3 +1,4 @@
+#include <cassert>
 #include <coreImage/channel_data.h>
 
 namespace myCoreImage
@@ -10,6 +11,9 @@ ChannelData::ChannelData(std::size_t width,
     , m_height(height)
     , m_elementDesc(elementDesc)
 {
+    assert(elementDesc.isValid());
+    assert(elementDesc.bitDepth != ChannelBitDepth::Bit1);
+
     m_strideBytes = width * elementDesc.bytesPerElement();
     m_buffer.resize(m_strideBytes * height);
 }

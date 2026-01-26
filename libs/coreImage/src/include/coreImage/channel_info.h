@@ -4,6 +4,9 @@
 #include <coreImage/types.h>
 #include <coreImage/channelElementDesc.h>
 
+#include <cstddef>
+
+
 namespace myCoreImage
 {
 
@@ -19,8 +22,8 @@ public:
     ChannelElementDesc elementDesc() const noexcept;
 
 private:
-    ChannelSemantic     m_semantic{ ChannelSemantic::Unknown };
-    ChannelElementDesc m_elementDesc{};
+    ChannelSemantic     m_semantic{ ChannelSemantic::Unknown };  // -- отвечает на вопрос: что это за канал R / G / B / Alpha / Gray / BW
+    ChannelElementDesc  m_elementDesc{};                         // -- отвечает на вопрос: как он хранится в памяти : тип (int/float), битность (1/8/16/32/64)
 };
 
 } // namespace myCoreImage

@@ -1,10 +1,10 @@
 #pragma once
 
 #include <coreImage/lib_coreImage.h>
+#include <coreImage/types.h>
 #include <coreImage/channelElementDesc.h>
 
 #include <cstddef>
-
 
 namespace myCoreImage
 {
@@ -36,11 +36,11 @@ public:
                         std::size_t h) const;
 
 private:
-    byte*               m_data = nullptr;
-    std::size_t         m_width = 0;
-    std::size_t         m_height = 0;
-    std::size_t         m_strideBytes = 0;
-    ChannelElementDesc  m_elementDesc{};
+    byte*              m_data = nullptr;
+    std::size_t        m_width = 0;
+    std::size_t        m_height = 0;
+    std::size_t        m_strideBytes = 0;
+    ChannelElementDesc m_elementDesc{};
 };
 
 } // namespace myCoreImage

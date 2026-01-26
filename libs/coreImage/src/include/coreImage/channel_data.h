@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <cstddef>
+
 #include <coreImage/lib_coreImage.h>
 #include <coreImage/types.h>
 #include <coreImage/channelElementDesc.h>
@@ -27,11 +29,11 @@ public:
     ChannelElementDesc elementDesc() const noexcept;
 
 private:
-    std::size_t              m_width  = 0;
-    std::size_t              m_height = 0;
-    std::size_t              m_strideBytes = 0;
-    ChannelElementDesc       m_elementDesc{};
-    std::vector<byte>        m_buffer;
+    std::size_t        m_width        = 0;
+    std::size_t        m_height       = 0;
+    std::size_t        m_strideBytes  = 0;
+    ChannelElementDesc m_elementDesc{};
+    std::vector<byte>  m_buffer;
 };
 
 } // namespace myCoreImage

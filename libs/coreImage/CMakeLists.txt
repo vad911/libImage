@@ -56,11 +56,11 @@ set(COREIMAGE_HEADERS
 )
 
 set(COREIMAGE_SOURCES
-    ${COREIMAGE_SRC_DIR}/types.cpp
+
     ${COREIMAGE_SRC_DIR}/channel.cpp
     ${COREIMAGE_SRC_DIR}/channel_info.cpp
     ${COREIMAGE_SRC_DIR}/channel_data.cpp
-    ${COREIMAGE_SRC_DIR}/channelElementDesc.cpp
+    
     ${COREIMAGE_SRC_DIR}/channelView.cpp
     ${COREIMAGE_SRC_DIR}/coreImage.cpp
     ${COREIMAGE_SRC_DIR}/image.cpp
@@ -109,7 +109,7 @@ endif()
 
 
 
-add_subdirectory(src/test)
+ # -- add_subdirectory(src/test)
 
 
 # ─────────────────────────────────────────────

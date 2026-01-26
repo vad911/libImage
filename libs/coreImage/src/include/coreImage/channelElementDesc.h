@@ -1,7 +1,6 @@
 #pragma once
 
 #include <coreImage/lib_coreImage.h>
-#include <coreImage/channelElementDesc.h>
 #include <coreImage/types.h>
 
 namespace myCoreImage
