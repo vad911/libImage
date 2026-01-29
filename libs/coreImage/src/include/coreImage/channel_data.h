@@ -1,8 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <cstddef>
-
 #include <coreImage/lib_coreImage.h>
 #include <coreImage/types.h>
 #include <coreImage/channelElementDesc.h>
@@ -19,19 +17,22 @@ public:
                 std::size_t height,
                 ChannelElementDesc elementDesc);
 
-    void* data() noexcept;
-    const void* data() const noexcept;
+    void* data() noexcept { return m_buffer.data(); }
+    const void* data() const noexcept { return m_buffer.data(); }
 
-    std::size_t width() const noexcept;
-    std::size_t height() const noexcept;
-    std::size_t strideBytes() const noexcept;
+    byte* dataPtr() noexcept { return m_buffer.data(); }
+    // const byte* dataPtr() const noexcept { return m_buffer.data(); }
 
-    ChannelElementDesc elementDesc() const noexcept;
+    std::size_t width() const noexcept { return m_width; }
+    std::size_t height() const noexcept { return m_height; }
+    std::size_t strideBytes() const noexcept { return m_strideBytes; }
+
+    ChannelElementDesc elementDesc() const noexcept { return m_elementDesc; }
 
 private:
-    std::size_t        m_width        = 0;
-    std::size_t        m_height       = 0;
-    std::size_t        m_strideBytes  = 0;
+    std::size_t        m_width  = 0;
+    std::size_t        m_height = 0;
+    std::size_t        m_strideBytes = 0;
     ChannelElementDesc m_elementDesc{};
     std::vector<byte>  m_buffer;
 };

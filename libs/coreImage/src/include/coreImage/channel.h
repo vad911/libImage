@@ -17,11 +17,11 @@ public:
             std::size_t width,
             std::size_t height);
 
-    ChannelInfo& info() noexcept;
-    const ChannelInfo& info() const noexcept;
+    ChannelInfo& info() noexcept { return m_info; }
+    const ChannelInfo& info() const noexcept { return m_info; }
 
-    ChannelData& data() noexcept;
-    const ChannelData& data() const noexcept;
+    ChannelData& data() noexcept { return m_data; }
+    const ChannelData& data() const noexcept { return m_data; }
 
     ChannelView view() noexcept;
     ChannelView view() const noexcept;

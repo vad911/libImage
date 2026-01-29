@@ -8,6 +8,17 @@ namespace myCoreImage
 
 using byte = std::uint8_t;
 
+
+// ============================
+// Packed formats
+// ============================
+enum class PixelFormat : std::uint8_t
+{
+    RGB565,
+    BW1
+};
+
+
 enum class ChannelSemantic : std::uint8_t
 {
     Red,

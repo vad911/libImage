@@ -1,5 +1,6 @@
 #include <coreImage/image.h>
 #include <stdexcept>
+#include <cstdint>
 
 namespace myCoreImage
 {
@@ -19,12 +20,11 @@ namespace myCoreImage
                 { ChannelSemantic::Blue,  desc }
             });
 
-            auto* r = static_cast<byte*>(img.channels()[0].data().data());
-            auto* g = static_cast<byte*>(img.channels()[1].data().data());
-            auto* b = static_cast<byte*>(img.channels()[2].data().data());
+            auto* r = img.channels()[0].dataPtr();
+            auto* g = img.channels()[1].dataPtr();
+            auto* b = img.channels()[2].dataPtr();
 
-            const std::uint16_t* pixels =
-                reinterpret_cast<const std::uint16_t*>(src.data());
+            const std::uint16_t* pixels = reinterpret_cast<const std::uint16_t*>(src.data());
 
             for (size_t i = 0; i < w * h; ++i)
             {
@@ -41,7 +41,7 @@ namespace myCoreImage
             ChannelElementDesc desc{ ChannelDataType::UnsignedInt, ChannelBitDepth::Bit8 };
             Image img(w, h, { { ChannelSemantic::Gray, desc } });
 
-            auto* gray = static_cast<byte*>(img.channels()[0].data().data());
+            auto* gray = img.channels()[0].dataPtr();
 
             for (size_t i = 0; i < w * h; ++i)
             {

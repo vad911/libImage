@@ -1,25 +1,20 @@
 #pragma once
 
 #include <coreImage/lib_coreImage.h>
-#include <coreImage/channelElementDesc.h>
 #include <coreImage/channel.h>
+#include <coreImage/types.h> 
 
 #include <vector>
 
 namespace myCoreImage
 {
 
-// Тип для массива каналов
 using ChannelArray = std::vector<Channel>;
 
+class Image; // forward declaration
+
 // ============================
-// fromInterleaved
-// Создать массив каналов из interleaved изображения
-// imageData   : поток байтов (interleaved)
-// width,height: размеры изображения
-// numChannels : количество каналов
-// elementDescs: описания каналов (тип+битность)
-// semantics   : семантика каналов (R,G,B,Gray,...)
+// Планар <-> Interleaved
 // ============================
 ChannelArray COREIMAGE_API fromInterleaved(
     const std::vector<byte>& imageData,
@@ -30,10 +25,15 @@ ChannelArray COREIMAGE_API fromInterleaved(
     const std::vector<ChannelSemantic>& semantics
 );
 
-// ============================
-// toInterleaved
-// Превратить массив каналов обратно в interleaved поток байтов
-// ============================
 std::vector<byte> COREIMAGE_API toInterleaved(const ChannelArray& channels);
+
+
+// Объявление функции, реализация в image.cpp
+Image COREIMAGE_API fromPacked(
+    const std::vector<byte>& src,
+    std::size_t width,
+    std::size_t height,
+    PixelFormat format
+);
 
 } // namespace myCoreImage

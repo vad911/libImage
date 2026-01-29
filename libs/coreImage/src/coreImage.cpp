@@ -4,7 +4,6 @@
 
 namespace myCoreImage
 {
-
 ChannelArray fromInterleaved(
     const std::vector<byte>& imageData,
     std::size_t width,
@@ -14,88 +13,65 @@ ChannelArray fromInterleaved(
     const std::vector<ChannelSemantic>& semantics
 )
 {
-    if (numChannels != elementDescs.size() || numChannels != semantics.size())
-        throw std::runtime_error("Mismatch in channel descriptions");
+    if(numChannels!=elementDescs.size()||numChannels!=semantics.size())
+        throw std::runtime_error("Mismatch channel descriptions");
 
-    // Создаём каналы
     ChannelArray channels;
     channels.reserve(numChannels);
-    for (std::size_t i = 0; i < numChannels; ++i)
-    {
-        ChannelInfo info(semantics[i], elementDescs[i]);
-        channels.emplace_back(info, width, height);
-    }
+    for(size_t i=0;i<numChannels;++i)
+        channels.emplace_back(ChannelInfo(semantics[i],elementDescs[i]),width,height);
 
-    // Считаем размер пикселя в байтах
-    std::size_t pixelSize = 0;
-    for (const auto& desc : elementDescs)
-        pixelSize += desc.bytesPerElement();
+    size_t pixelSize=0;
+    for(const auto& desc:elementDescs) pixelSize+=desc.bytesPerElement();
+    if(imageData.size()!=width*height*pixelSize)
+        throw std::runtime_error("Image data size mismatch");
 
-    if (imageData.size() != width * height * pixelSize)
-        throw std::runtime_error("Image data size does not match width*height*pixelSize");
-
-    // Распаковываем interleaved -> planar
-    for (std::size_t y = 0; y < height; ++y)
-    {
-        for (std::size_t x = 0; x < width; ++x)
+    for(size_t y=0;y<height;++y)
+        for(size_t x=0;x<width;++x)
         {
-            std::size_t pixelOffset = (y * width + x) * pixelSize;
-            std::size_t channelOffset = 0;
-
-            for (std::size_t c = 0; c < numChannels; ++c)
+            size_t pixelOffset=(y*width+x)*pixelSize;
+            size_t channelOffset=0;
+            for(size_t c=0;c<numChannels;++c)
             {
-                auto& channel = channels[c];
-                auto bytesPerElement = channel.data().elementDesc().bytesPerElement();
-                std::uint8_t* dest = static_cast<std::uint8_t*>(channel.data().data()) + y*channel.data().strideBytes() + x*bytesPerElement;
-
-                std::memcpy(dest, imageData.data() + pixelOffset + channelOffset, bytesPerElement);
-
-                channelOffset += bytesPerElement;
+                auto& channel=channels[c];
+                size_t bpe=channel.data().elementDesc().bytesPerElement();
+                std::uint8_t* dest=static_cast<std::uint8_t*>(channel.data().data())+y*channel.data().strideBytes()+x*bpe;
+                std::memcpy(dest,imageData.data()+pixelOffset+channelOffset,bpe);
+                channelOffset+=bpe;
             }
         }
-    }
-
     return channels;
 }
 
 std::vector<byte> toInterleaved(const ChannelArray& channels)
 {
-    if (channels.empty())
-        return {};
+    if(channels.empty()) return {};
+    size_t width=channels[0].data().width();
+    size_t height=channels[0].data().height();
+    size_t numChannels=channels.size();
+    std::vector<size_t> bytesPerChannel(numChannels);
+    size_t pixelSize=0;
 
-    std::size_t width = channels[0].data().width();
-    std::size_t height = channels[0].data().height();
-    std::size_t numChannels = channels.size();
-
-    std::vector<std::size_t> bytesPerChannel(numChannels);
-    std::size_t pixelSize = 0;
-
-    for (std::size_t c = 0; c < numChannels; ++c)
+    for(size_t c=0;c<numChannels;++c)
     {
-        bytesPerChannel[c] = channels[c].data().elementDesc().bytesPerElement();
-        pixelSize += bytesPerChannel[c];
+        bytesPerChannel[c]=channels[c].data().elementDesc().bytesPerElement();
+        pixelSize+=bytesPerChannel[c];
     }
 
-    std::vector<byte> imageData(width * height * pixelSize);
-
-    for (std::size_t y = 0; y < height; ++y)
-    {
-        for (std::size_t x = 0; x < width; ++x)
+    std::vector<byte> imageData(width*height*pixelSize);
+    for(size_t y=0;y<height;++y)
+        for(size_t x=0;x<width;++x)
         {
-            std::size_t pixelOffset = (y * width + x) * pixelSize;
-            std::size_t channelOffset = 0;
-
-            for (std::size_t c = 0; c < numChannels; ++c)
+            size_t pixelOffset=(y*width+x)*pixelSize;
+            size_t channelOffset=0;
+            for(size_t c=0;c<numChannels;++c)
             {
-                const auto& channel = channels[c];
-                const auto* src = static_cast<const byte*>(channel.data().data()) + y*channel.data().strideBytes() + x*bytesPerChannel[c];
-                std::memcpy(imageData.data() + pixelOffset + channelOffset, src, bytesPerChannel[c]);
-                channelOffset += bytesPerChannel[c];
+                const auto& channel=channels[c];
+                const auto* src=static_cast<const byte*>(channel.data().data())+y*channel.data().strideBytes()+x*bytesPerChannel[c];
+                std::memcpy(imageData.data()+pixelOffset+channelOffset,src,bytesPerChannel[c]);
+                channelOffset+=bytesPerChannel[c];
             }
         }
-    }
-
     return imageData;
 }
-
 } // namespace myCoreImage

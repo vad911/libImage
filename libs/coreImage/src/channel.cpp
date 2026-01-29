@@ -11,30 +11,10 @@ Channel::Channel(ChannelInfo info,
 {
 }
 
-ChannelInfo& Channel::info() noexcept
-{
-    return m_info;
-}
-
-const ChannelInfo& Channel::info() const noexcept
-{
-    return m_info;
-}
-
-ChannelData& Channel::data() noexcept
-{
-    return m_data;
-}
-
-const ChannelData& Channel::data() const noexcept
-{
-    return m_data;
-}
-
 ChannelView Channel::view() noexcept
 {
     return ChannelView(
-        m_data.data(),
+        m_data.dataPtr(),
         m_data.width(),
         m_data.height(),
         m_data.strideBytes(),
