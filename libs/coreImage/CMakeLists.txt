@@ -49,7 +49,8 @@ set(COREIMAGE_HEADERS
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channel_data.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channelElementDesc.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/channelView.h
-    ${COREIMAGE_INCLUDE_DIR}/coreImage/coreImage.h
+    ${COREIMAGE_INCLUDE_DIR}/coreImage/image_converters.h
+    ${COREIMAGE_INCLUDE_DIR}/coreImage/image_layout.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/lib_coreImage.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/image.h
 
@@ -62,7 +63,8 @@ set(COREIMAGE_SOURCES
     ${COREIMAGE_SRC_DIR}/channel_data.cpp
     
     ${COREIMAGE_SRC_DIR}/channelView.cpp
-    ${COREIMAGE_SRC_DIR}/coreImage.cpp
+    ${COREIMAGE_SRC_DIR}/image_converters.cpp
+    ${COREIMAGE_SRC_DIR}/image_layout.cpp
     ${COREIMAGE_SRC_DIR}/image.cpp
 
 )

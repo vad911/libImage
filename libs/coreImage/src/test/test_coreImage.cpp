@@ -2,7 +2,8 @@
 #include <vector>
 #include <iomanip>
 #include <cstring>
-#include <coreImage/coreImage.h>
+
+#include <coreImage/image_converter.h>
 
 using namespace myCoreImage;
 

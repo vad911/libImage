@@ -1,5 +1,5 @@
 #include <coreImage/image.h>
-#include <coreImage/coreImage.h>
+#include <coreImage/image_converters.h>
 #include <stdexcept>
 #include <cstring>
 
