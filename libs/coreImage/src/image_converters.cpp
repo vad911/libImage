@@ -2,8 +2,12 @@
 #include <stdexcept>
 #include <cstring>
 
+
+
 namespace myCoreImage
 {
+namespace converters {
+    
 ChannelArray fromInterleaved(
     const std::vector<byte>& imageData,
     std::size_t width,
@@ -74,4 +78,6 @@ std::vector<byte> toInterleaved(const ChannelArray& channels)
         }
     return imageData;
 }
+
+} // -- namespace converters
 } // namespace myCoreImage

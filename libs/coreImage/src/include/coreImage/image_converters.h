@@ -9,6 +9,9 @@
 namespace myCoreImage
 {
 
+namespace converters 
+{
+
 using ChannelArray = std::vector<Channel>;
 
 class Image; // forward declaration
@@ -35,5 +38,6 @@ Image COREIMAGE_API fromPacked(
     std::size_t height,
     PixelFormat format
 );
+} // -- namespace converters
 
 } // namespace myCoreImage

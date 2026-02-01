@@ -1,9 +1,13 @@
+#include <coreImage/image_converters.h>
 #include <coreImage/image.h>
+
 #include <iostream>
 #include <vector>
 #include <iomanip>
 
 using namespace myCoreImage;
+namespace cv = myCoreImage::converters;
+
 
 int main()
 {
@@ -17,7 +21,7 @@ int main()
     std::vector<byte> packedRgb565(reinterpret_cast<byte*>(rgb565Pixels.data()),
                                    reinterpret_cast<byte*>(rgb565Pixels.data()) + rgb565Pixels.size()*2);
 
-    Image imgRgb = Image::from_packed(packedRgb565, 2, 2, PixelFormat::RGB565);
+    Image imgRgb = Image::fromPacked(packedRgb565, 2, 2, PixelFormat::RGB565);
 
     for (size_t c = 0; c < imgRgb.numChannels(); ++c)
     {
@@ -34,7 +38,7 @@ int main()
     // ------------------------------
     std::cout << "\n2) BW1 8x1\n";
     std::vector<byte> bwPacked = { 0b10110011 }; // 8 пикселей в 1 байте
-    Image imgBW = Image::from_packed(bwPacked, 8, 1, PixelFormat::BW1);
+    Image imgBW = Image::fromPacked(bwPacked, 8, 1, PixelFormat::BW1);
 
     auto* grayData = static_cast<byte*>(imgBW.channel(0).data().data());
     std::cout << "Gray channel: ";
@@ -71,7 +75,7 @@ int main()
     // 4. Convert planar back to interleaved
     // ------------------------------
     std::cout << "\n4) Planar -> Interleaved\n";
-    std::vector<byte> interleavedOut = toInterleaved(imgInterleaved.channels());
+    std::vector<byte> interleavedOut = cv::toInterleaved(imgInterleaved.channels());
     for (size_t i = 0; i < interleavedOut.size(); i += 3)
     {
         std::cout << "Pixel: " 

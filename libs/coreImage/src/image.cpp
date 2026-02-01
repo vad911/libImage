@@ -3,8 +3,14 @@
 #include <stdexcept>
 #include <cstring>
 
+
+namespace cv = myCoreImage::converters;
+
 namespace myCoreImage
 {
+
+    
+
 
 Image::Image(std::size_t width, std::size_t height, const std::vector<ChannelInfo>& channelInfos)
     : m_width(width), m_height(height)
@@ -38,7 +44,7 @@ Image Image::fromInterleaved(
     const std::vector<ChannelSemantic>& semantics
 )
 {
-    ChannelArray channels = myCoreImage::fromInterleaved(
+    ChannelArray channels = cv::fromInterleaved(
         imageData, width, height, elementDescs.size(), elementDescs, semantics);
 
     Image img;
@@ -50,7 +56,7 @@ Image Image::fromInterleaved(
 
 std::vector<byte> Image::toInterleaved() const
 {
-    return myCoreImage::toInterleaved(m_channels);
+    return cv::toInterleaved(m_channels);
 }
 
 Image Image::fromPacked(const std::vector<byte>& src, std::size_t w, std::size_t h, PixelFormat format)

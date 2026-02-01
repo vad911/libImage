@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <cstring>
 
-#include <coreImage/image_converter.h>
+#include <coreImage/image_converters.h>
 
 using namespace myCoreImage;
 
