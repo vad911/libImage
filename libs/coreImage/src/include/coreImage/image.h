@@ -1,19 +1,13 @@
 #pragma once
 
-
-
 #include <coreImage/lib_coreImage.h>
 #include <coreImage/channel.h>
 #include <vector>
-
-
-// namespace cv = myCoreImage::converters;
 
 namespace myCoreImage
 {
 
 using ChannelArray = std::vector<Channel>;
-
 
 // =================================
 // Image
