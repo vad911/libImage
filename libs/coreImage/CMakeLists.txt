@@ -53,6 +53,7 @@ set(COREIMAGE_HEADERS
     ${COREIMAGE_INCLUDE_DIR}/coreImage/image_layout.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/lib_coreImage.h
     ${COREIMAGE_INCLUDE_DIR}/coreImage/image.h
+    ${COREIMAGE_INCLUDE_DIR}/coreImage/transform.h
 
 )
 
@@ -66,6 +67,8 @@ set(COREIMAGE_SOURCES
     ${COREIMAGE_SRC_DIR}/image_converters.cpp
     ${COREIMAGE_SRC_DIR}/image_layout.cpp
     ${COREIMAGE_SRC_DIR}/image.cpp
+    ${COREIMAGE_SRC_DIR}/transform.cpp
+    #-- ${COREIMAGE_SRC_DIR}/packed.cpp
 
 )
 

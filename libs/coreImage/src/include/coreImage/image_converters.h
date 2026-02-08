@@ -3,21 +3,15 @@
 #include <coreImage/lib_coreImage.h>
 #include <coreImage/channel.h>
 #include <coreImage/types.h> 
-#include <coreImage/image.h>  // <-- для myCoreImage::Image
-
 #include <vector>
 
-namespace myCoreImage
-{
-
-namespace converters 
-{
+namespace myCoreImage {
+namespace converters {
 
 using ChannelArray = std::vector<Channel>;
 
-// ============================
-// Планар <-> Interleaved
-// ============================
+class Image; // forward declaration
+
 ChannelArray COREIMAGE_API fromInterleaved(
     const std::vector<byte>& imageData,
     std::size_t width,
@@ -29,8 +23,7 @@ ChannelArray COREIMAGE_API fromInterleaved(
 
 std::vector<byte> COREIMAGE_API toInterleaved(const ChannelArray& channels);
 
-// Создание Image из упакованного формата (packed)
-myCoreImage::Image COREIMAGE_API fromPacked(
+Image COREIMAGE_API fromPacked(
     const std::vector<byte>& src,
     std::size_t width,
     std::size_t height,
@@ -38,5 +31,4 @@ myCoreImage::Image COREIMAGE_API fromPacked(
 );
 
 } // namespace converters
-
 } // namespace myCoreImage

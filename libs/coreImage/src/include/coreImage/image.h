@@ -1,11 +1,9 @@
 #pragma once
-
 #include <coreImage/lib_coreImage.h>
 #include <coreImage/channel.h>
 #include <vector>
 
-namespace myCoreImage
-{
+namespace myCoreImage {
 
 using ChannelArray = std::vector<Channel>;
 
@@ -25,9 +23,9 @@ public:
     Channel& channel(std::size_t index);
     const Channel& channel(std::size_t index) const;
 
-    ChannelArray& channels()  { return m_channels; }
+    ChannelArray& channels() { return m_channels; }
 
-    // Создание Image из interleaved
+    // === Converters ===
     static Image fromInterleaved(
         const std::vector<byte>& imageData,
         std::size_t width,
@@ -36,16 +34,18 @@ public:
         const std::vector<ChannelSemantic>& semantics
     );
 
-    // Превращение Image обратно в interleaved поток байтов
     std::vector<byte> toInterleaved() const;
 
-    // Создание Image из упакованного формата (packed)
     static Image fromPacked(
         const std::vector<byte>& src,
         std::size_t width,
         std::size_t height,
         PixelFormat format
     );
+
+    // === Transform convenience ===
+    Image resized(std::size_t newWidth, std::size_t newHeight) const;
+    Image rotated(double angleDegrees) const;
 
 private:
     std::size_t m_width{0};
@@ -60,11 +60,9 @@ class COREIMAGE_API ImageView
 {
 public:
     ImageView(Image& image) : m_image(image) {}
-
     std::size_t width() const { return m_image.width(); }
     std::size_t height() const { return m_image.height(); }
     std::size_t numChannels() const { return m_image.numChannels(); }
-
     ChannelView channelView(std::size_t index) { return m_image.channel(index).view(); }
 
 private:

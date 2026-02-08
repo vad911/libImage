@@ -27,6 +27,7 @@ enum class ChannelSemantic : std::uint8_t
     Alpha,
     Gray,
     BlackWhite,
+    Luminance,
     Unknown
 };
 

@@ -105,3 +105,6 @@ namespace myCoreImage::converters {
 
 
 Это подчеркнёт, что Image не должен знать об этих деталях, а ImageView/ChannelView только читают/модифицируют данные.
+
+// -- 
+
